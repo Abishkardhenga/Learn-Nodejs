@@ -1,8 +1,10 @@
 const checkMethod = (req, res, next) => {
   console.log(`${req.method} ${req.url}`);
+  // this is custom created middleware
   next();
 };
 
+// creating apikey through middleware
 const checkApiKey = (req, res, next) => {
   const apikey = req.headers.apikey;
   // const {apikey}  = req.headers

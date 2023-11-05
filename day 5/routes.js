@@ -9,4 +9,6 @@ routes.post("/login", login);
 
 routes.post("/register", register);
 
+// used controller here to imporve code quality
+
 module.exports = routes;

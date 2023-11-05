@@ -20,6 +20,8 @@ const login = (req, res) => {
   }
 };
 
+// this is a controller folder basicaaly for authrization stuff 
+
 const register = (req, res) => {
   const { name, email, password, phoneNumber } = req.body;
 
