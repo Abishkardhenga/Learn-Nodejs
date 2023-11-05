@@ -1,7 +1,9 @@
+// middleware for checking method and request url
 const checkMethod = (req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   // this is custom created middleware
   next();
+  // should add next so code move can move to  next if we don't do then it becames infinite loop
 };
 
 // creating apikey through middleware

@@ -1,4 +1,5 @@
 const { LoginInfo } = require("../data");
+// endpoint for  login
 
 const login = (req, res) => {
   const { email, password } = req.body;
@@ -20,8 +21,9 @@ const login = (req, res) => {
   }
 };
 
-// this is a controller folder basicaaly for authrization stuff 
+// this is a controller folder basicaaly for authrization stuff
 
+// endpoint for registering new user endpoint
 const register = (req, res) => {
   const { name, email, password, phoneNumber } = req.body;
 
