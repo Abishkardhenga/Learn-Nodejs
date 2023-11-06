@@ -1,10 +1,12 @@
 const express = require("express");
 const cors = require("cors");
+// first we need to install cors
 const app = express();
 const port = 8000;
 
 app.use(express.json());
 
+// using cors
 app.use(
   cors({
     origin: "http://localhost:5173",
