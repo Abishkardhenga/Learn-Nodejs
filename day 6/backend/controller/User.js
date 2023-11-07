@@ -7,7 +7,7 @@ const UserProfile = (req, res) => {
   const { id } = req.params;
 
   const SearchedProfile = data.find((item) => {
-    item.id === Number(id);
+    return item.id === Number(id);
   });
 
   if (SearchedProfile) {

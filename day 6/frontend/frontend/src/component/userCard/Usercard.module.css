@@ -1,5 +1,5 @@
 .userContainer{
-    height: 100px;
+    height: 120px;
     width: 200px;
     background-color: rgb(141, 226, 43);
     display: flex;
@@ -10,8 +10,6 @@
     color: rgb(112, 0, 0);
     cursor: pointer;
 
-}
-
-.link{
     text-decoration: none;
 }
+

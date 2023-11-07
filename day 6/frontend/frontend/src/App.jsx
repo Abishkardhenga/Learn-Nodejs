@@ -13,8 +13,8 @@ const App = () => {
 
   let FetchUser = async () => {
     let data = await axios.get(api);
-    let users = data.data.message.data;
-    console.log("this is users message", users);
+    let users = data.data.message;
+    // console.log("this is users message", users);
     setUserCollection(users);
   };
 
