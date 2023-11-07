@@ -3,8 +3,6 @@ import styles from "./Usercard.module.css";
 import { Link, useLocation } from "react-router-dom";
 
 const Usercard = ({ item }) => {
-  // const { id } = useLocation();
-  // console.log("this is item", item);
   return (
     <Link to={`/userprofile/${item.id}`} className={styles.userContainer}>
       {/* <p>id: {item.id}</p> */}
