@@ -1,13 +1,15 @@
 import React from "react";
 import "./Moviecard.css";
+import { Link, useParams } from "react-router-dom";
 
 const Moviecard = ({ item }) => {
+  // const { id } = useParams();
   return (
-    <div className="moviecardContainer">
-      <img src={item.picture} alt="movieImg" />
+    <Link to={`/movie/ ${item.id}`} className="moviecardContainer">
+      <img src={item.picture} className="movieImg" alt="movieImg" />
       <p>Movie NAME : {item.name} </p>
       <p>desc: {item.desc}</p>
-    </div>
+    </Link>
   );
 };
 

@@ -2,7 +2,7 @@ const data = [
   {
     name: "kabbadi 4",
     picture:
-      "https://www.pexels.com/photo/calm-lake-surrounded-by-trees-13952451/",
+      "https://images.pexels.com/photos/2859016/pexels-photo-2859016.jpeg?auto=compress&cs=tinysrgb&w=600",
     link: "https://www.youtube.com/watch?v=7WR3qzB40V8",
     id: 1,
     desc: "nepali movie",
