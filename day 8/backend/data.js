@@ -1,6 +1,6 @@
 const user = [
   {
-    name: "Aabsiakr dhenga",
+    name: "Aabiskar",
     id: 1,
     address: "butwal",
   },
@@ -26,4 +26,4 @@ const user = [
   },
 ];
 
-module.exports = { user };
+module.exports = user;
