@@ -1,0 +1,47 @@
+.registerContainer{
+    height: 70vh;
+    width: 26%;
+    background-color: rgba(16, 122, 122, 0.95);
+    display: flex;
+    padding: 1rem 2rem;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+    border-radius: 8px;
+    gap: 1rem;
+}
+
+.inputWrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+justify-content: center;
+gap: 1rem;
+padding-left: 2rem;
+}
+.RegisterBtn{
+    background-color: blue;
+    color: white;
+    height: 44px;
+    width: 122px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.buttonWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputBox{
+    width: 80%;
+    height: 34px;
+    outline: none;
+    border-radius: 8px;
+    border: none;
+    padding-left: 0.8rem;
+}
