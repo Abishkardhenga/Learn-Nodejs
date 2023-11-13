@@ -54,6 +54,14 @@ const getUserById = async (req, res) => {
     console.log(error);
   }
 };
+const getMovies = async (req, res) => {
+  try {
+    const movies = await movie.find();
+    res.status(200).json({ message: movies });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 module.exports = {
   RegisterHandler,
@@ -62,4 +70,5 @@ module.exports = {
   getUserById,
   CreatorHandler,
   getUsers,
+  getMovies,
 };

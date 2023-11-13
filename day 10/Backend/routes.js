@@ -5,6 +5,7 @@ const {
   CreatorHandler,
   getUsers,
   getUserById,
+  getMovies,
 } = require("./controller/Authcontroller");
 
 const routes = require("express").Router();
@@ -16,5 +17,5 @@ routes.post("/movie", MovieHandler);
 routes.post("/creator", CreatorHandler);
 routes.get("/users", getUsers);
 routes.get("/users/:id", getUserById);
-
+routes.get("/movies", getMovies);
 module.exports = routes;
