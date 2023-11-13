@@ -6,6 +6,7 @@ dotenv.config();
 const UserDb = require("./utilis/db");
 const ProductDetail = require("./Model/ProductModel");
 const movieDetail = require("./Model/MoviesModel");
+const creator = require("./Model/creator");
 
 app.use(express.json());
 app.use(
@@ -17,8 +18,7 @@ app.use(
 );
 
 UserDb();
-ProductDetail();
-movieDetail();
+
 app.use(require("./routes"));
 
 app.listen(8000, () => {
