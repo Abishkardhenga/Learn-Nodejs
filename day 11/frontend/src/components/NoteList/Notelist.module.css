@@ -1,0 +1,32 @@
+
+.noteList{
+    width: 75%;
+    background-color: rgba(72, 71, 71, 0.55);
+    height: 36px;
+    border-radius: 4px;
+ padding: 0 12px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+.noteText{
+    width: 85%;
+    letter-spacing: 1px;
+    
+}
+.BtnWrapper{
+    height: 100%;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    /* background-color: red; */
+    justify-content: center;
+}
+
+.editBtn{
+cursor: pointer;
+}
+.deleteBtn{
+    cursor: pointer;
+
+}
