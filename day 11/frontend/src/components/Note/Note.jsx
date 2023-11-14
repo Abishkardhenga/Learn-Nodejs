@@ -8,9 +8,13 @@ const Note = () => {
   let api = "http://localhost:8000/createnote";
   let getApi = "http://localhost:8000/note";
   let [noteCollection, setNoteCollection] = useState([]);
-  let [note, setNote] = useState();
+  let [note, setNote] = useState("");
 
-  const CreateNote = async () => {
+  const handleAdd = async () => {
+    if (note.trim().length === 0) {
+      return;
+    }
+
     try {
       const data = await axios.post(api, {
         note,
@@ -48,14 +52,18 @@ const Note = () => {
             placeholder="Enter the Note"
             type="text"
           />
-          <button onClick={CreateNote} className={styles.addBtn}>
+          <button onClick={handleAdd} className={styles.addBtn}>
             Add
           </button>
         </div>
         <div className={styles.listContainer}>
-          {noteCollection.map((item) => {
-            return <Notelist item={item} />;
-          })}
+          {noteCollection.length === 0 ? (
+            <p>No Notes </p>
+          ) : (
+            noteCollection.map((item) => {
+              return <Notelist item={item} />;
+            })
+          )}
         </div>
       </div>
     </div>

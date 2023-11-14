@@ -34,6 +34,8 @@
     height: 38px;
     padding-left: 12px;
 }
+.inputBox::placeholder {
+    color: #808080;  }
 .addBtn{
     height: 38px;
     
