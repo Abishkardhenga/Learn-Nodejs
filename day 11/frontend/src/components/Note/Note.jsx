@@ -34,6 +34,7 @@ const Note = () => {
       console.log(err);
     }
   };
+
   return (
     <div className={styles.noteContainer}>
       <div className={styles.container}>
