@@ -34,11 +34,10 @@ let deleteNote = async (req, res) => {
 };
 let updateNote = async (req, res) => {
   const { id } = req.params;
-  const { note } = req.body;
   console.log("this is id", id);
   try {
     let data = await note.findByIdAndUpdate(id, {
-      note,
+      note: req.body.note,
     });
     console.log("this is data", data);
     res.status(200).json({ message: data, success: true });
