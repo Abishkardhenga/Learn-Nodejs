@@ -1,49 +1,37 @@
-let note = require("../models/Note");
-let createNote = async (req, res) => {
+// create user
+// get user by id
+
+const user = require("../models/User");
+
+const CreateUser = async (req, res) => {
   try {
-    let data = await note.create(req.body);
-    res.status(200).json({ message: data, success: true });
-  } catch (err) {
-    console.error(err);
-  }
-};
-let getNotes = async (req, res) => {
-  try {
-    let data = await note.find();
-    res.status(200).json({ message: data, success: true });
+    let newUser = await user.create(req.body);
+    res
+      .status(200)
+      .json({ message: "user created successfully", newUser, success: true });
   } catch (err) {
     console.log(err);
+    res.status(403).json({ message: err.message, success: true });
   }
 };
-
-let deleteNote = async (req, res) => {
+const GetUserbyId = async (req, res) => {
+  const { id } = req.params;
   try {
-    let { id } = req.params;
-    console.log("id ", id);
-    let data = await note.findByIdAndDelete(id);
-    console.log("data", data);
-    res.status(200).json({
-      message: data,
-      text: `successfully delete the ${id} `,
-      success: true,
-    });
+    const data = await user.findById(id);
+    res.status(200).json({ message: data, success: true });
   } catch (err) {
-    console.log("this is err", err);
     res.status(403).json({ message: err, success: false });
   }
 };
-let updateNote = async (req, res) => {
-  const { id } = req.params;
-  console.log("this is id", id);
+
+const GetUser = async (req, res) => {
   try {
-    let data = await note.findByIdAndUpdate(id, {
-      note: req.body.note,
-    });
-    console.log("this is data", data);
-    res.status(200).json({ message: data, success: true });
+    const allUsers = await user.find();
+    res.status(200).json({ message: allUsers, success: true });
   } catch (err) {
-    console.log("this is err", err);
+    console.log(err);
+    res.status(403).json({ message: err, success: false });
   }
 };
 
-module.exports = { createNote, getNotes, deleteNote, updateNote };
+module.exports = { CreateUser, GetUser, GetUserbyId };

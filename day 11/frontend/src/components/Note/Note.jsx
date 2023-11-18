@@ -7,28 +7,32 @@ import { FiEdit } from "react-icons/fi";
 const Note = () => {
   let [editMode, setEditMode] = useState(false);
   let deleteApi = "http://localhost:8000/deleteNote";
+  let editApi = "http://localhost:8000/updateNote";
 
   let api = "http://localhost:8000/createnote";
   let getApi = "http://localhost:8000/note";
   let [noteCollection, setNoteCollection] = useState([]);
   let [note, setNote] = useState("");
-  let [updatingNote, setUpdatingNote] = useState();
+  let [editNode, setEditNode] = useState(null);
+
+  useEffect(() => {
+    GetData();
+  }, []);
+  // let [updatingNote, setUpdatingNote] = useState();
 
   let HandleDelete = async (item) => {
     try {
       let data = await axios.delete(`${deleteApi}/${item._id}`);
       GetData();
-      console.log(data);
     } catch (err) {
       console.log(err);
     }
   };
 
   let handleEdit = (item) => {
-    console.log("item: ", item);
     setEditMode(true);
     setNote(item.note);
-    setUpdatingNote(item.note);
+    setEditNode(item);
   };
 
   const handleAdd = async () => {
@@ -37,8 +41,10 @@ const Note = () => {
       return;
     }
     if (editMode) {
-      updateNote(item);
+      updateNote();
+
       setNote("");
+      GetData();
       return;
     }
 
@@ -47,15 +53,13 @@ const Note = () => {
         note,
       });
       setNote(" ");
+      GetData();
+      setEditNode(null);
       console.log("this is data", data);
     } catch (err) {
       console.log("this is ", err);
     }
   };
-
-  useEffect(() => {
-    GetData();
-  }, [noteCollection]);
 
   let GetData = async () => {
     try {
@@ -66,12 +70,12 @@ const Note = () => {
       console.log(err);
     }
   };
-  let updateNote = async (item) => {
-    let editApi = "http://localhost:8000/updateNote";
+  let updateNote = async () => {
+    alert("update");
 
     try {
-      await axios.patch(`${editApi}/${item?._id}`, { note: updatingNote });
-      GetData();
+      await axios.put(`${editApi}/${editNode?._id}`, { note });
+      console.log("item itd", item.id);
     } catch (err) {
       console.log("this is err", err);
     }
