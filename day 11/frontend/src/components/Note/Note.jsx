@@ -3,6 +3,7 @@ import styles from "./Note.module.css";
 import axios from "axios";
 import { AiFillDelete } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
+import { useLocation } from "react-router-dom";
 
 const Note = () => {
   let [editMode, setEditMode] = useState(false);
@@ -10,15 +11,15 @@ const Note = () => {
   let editApi = "http://localhost:8000/updateNote";
 
   let api = "http://localhost:8000/createnote";
-  let getApi = "http://localhost:8000/note";
   let [noteCollection, setNoteCollection] = useState([]);
   let [note, setNote] = useState("");
   let [editNode, setEditNode] = useState(null);
-
+  let { state: user } = useLocation();
+  let getApi = `http://localhost:8000/note?owner=${user._id}`;
   useEffect(() => {
     GetData();
+    console.log("this is state", location);
   }, []);
-  // let [updatingNote, setUpdatingNote] = useState();
 
   let HandleDelete = async (item) => {
     try {
@@ -42,15 +43,15 @@ const Note = () => {
     }
     if (editMode) {
       updateNote();
-
-      setNote("");
       GetData();
+      setNote("");
       return;
     }
 
     try {
       const data = await axios.post(api, {
         note,
+        owner: user._id,
       });
       setNote(" ");
       GetData();
@@ -71,10 +72,11 @@ const Note = () => {
     }
   };
   let updateNote = async () => {
-    alert("update");
-
     try {
-      await axios.put(`${editApi}/${editNode?._id}`, { note });
+      await axios.put(`${editApi}/${editNode?._id}`, {
+        note,
+        owner: user?._id,
+      });
       console.log("item itd", item.id);
     } catch (err) {
       console.log("this is err", err);

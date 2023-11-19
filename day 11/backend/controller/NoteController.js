@@ -9,7 +9,7 @@ let createNote = async (req, res) => {
 };
 let getNotes = async (req, res) => {
   try {
-    let data = await note.find();
+    let data = await note.find({ ...req.query });
     res.status(200).json({ message: data, success: true });
   } catch (err) {
     console.log(err);

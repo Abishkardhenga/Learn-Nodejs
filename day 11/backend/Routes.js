@@ -1,3 +1,4 @@
+const { loginController } = require("./controller/Auth");
 const {
   createNote,
   getNotes,
@@ -16,7 +17,8 @@ routes.post("/createNote", createNote);
 routes.get("/note", getNotes);
 routes.delete("/deleteNote/:id", deleteNote);
 routes.put("/updateNote/:id", updateNote);
-routes.post("/createuser", CreateUser);
+routes.post("/register", CreateUser);
 routes.get("/user", GetUser);
 routes.get("/user/:id", GetUserbyId);
+routes.post("/login", loginController)
 module.exports = routes;

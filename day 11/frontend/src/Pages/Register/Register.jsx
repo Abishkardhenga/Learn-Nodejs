@@ -6,12 +6,13 @@ const Register = () => {
   let [username, setUsername] = useState();
   let [email, setEmail] = useState();
   let [password, setPassword] = useState();
-  let registerApi = " http://localhost:8000/createuser";
+  let [statusCode, setStatusCode] = useState();
+  let [Id, setId] = useState();
+  let registerApi = " http://localhost:8000/register";
 
   let registerUser = async () => {
     try {
-      alert("fucntion executing");
-      await axios.post(registerApi, {
+      const { data, status } = await axios.post(registerApi, {
         username,
         email,
         password,
@@ -19,6 +20,11 @@ const Register = () => {
       setUsername("");
       setEmail("");
       setPassword("");
+
+      setId(data.newUser._id);
+      setStatusCode(status);
+      console.log("this is data", data.newUser._id);
+      console.log("this is code", statusCode);
     } catch (err) {
       console.log(err);
     }
@@ -67,6 +73,8 @@ const Register = () => {
             Register
           </button>
         </div>
+        <p>Go to Login Page</p>
+        {statusCode === 200 ? Id : " "}
       </div>
     </div>
   );
