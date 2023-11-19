@@ -2,12 +2,24 @@ const user = require("../models/User");
 const loginController = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const newUser = await user.find({ email });
-    console.log("this is newUser", newUser[0].username);
-    if (newUser[0].password !== password) {
-      res.status(403).json({ message: "password mismatch", success: false });
-    } else if (newUser[0].password == password) {
-      res.status(200).json({ message: "password is correct", success: true });
+    const newUser = await user.findOne({ email });
+    if (!newUser) {
+      return res
+        .status(404)
+        .json({ message: "User not found with this email", success: false });
+    }
+
+    console.log("this is newUser", newUser._id);
+    if (newUser.password !== password) {
+      res.status(403).json({
+        message: "password mismatch",
+
+        success: false,
+      });
+    } else if (newUser.password == password) {
+      res
+        .status(200)
+        .json({ message: "login successfully", newUser, success: true });
     }
   } catch (err) {
     console.log(err);

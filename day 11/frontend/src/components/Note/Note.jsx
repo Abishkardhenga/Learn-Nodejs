@@ -15,10 +15,10 @@ const Note = () => {
   let [note, setNote] = useState("");
   let [editNode, setEditNode] = useState(null);
   let { state: user } = useLocation();
-  let getApi = `http://localhost:8000/note?owner=${user._id}`;
+  let getApi = `http://localhost:8000/note?owner=${user.newUser._id}`;
   useEffect(() => {
     GetData();
-    console.log("this is state", location);
+    console.log("this is state", user);
   }, []);
 
   let HandleDelete = async (item) => {
