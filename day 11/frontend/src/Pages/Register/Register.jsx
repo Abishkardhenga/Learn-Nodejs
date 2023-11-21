@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import styles from "./Register.module.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   let [username, setUsername] = useState();
   let [email, setEmail] = useState();
   let [password, setPassword] = useState();
-  let [statusCode, setStatusCode] = useState();
-  let [Id, setId] = useState();
   let registerApi = " http://localhost:8000/register";
 
   let registerUser = async () => {
@@ -73,8 +72,9 @@ const Register = () => {
             Register
           </button>
         </div>
-        <p>Go to Login Page</p>
-        {statusCode === 200 ? Id : " "}
+        <p>
+          Go to <Link to="/login">Login</Link> Page
+        </p>
       </div>
     </div>
   );

@@ -47,11 +47,11 @@ const Note = () => {
       setNote("");
       return;
     }
-
+    console.log("this is user", user);
     try {
       const data = await axios.post(api, {
         note,
-        owner: user._id,
+        owner: user.newUser._id,
       });
       setNote(" ");
       GetData();
